@@ -4,6 +4,7 @@ import styles from './user.module.css'
 type Props = {
   name: string
   avatarUrl?: string
+  showName?: boolean
 }
 
 const User = (props: Props) => {
@@ -20,7 +21,7 @@ const User = (props: Props) => {
       ) : (
         <span className={styles.initials}>{initials}</span>
       )}
-      {name}
+      {props.showName ? name : null}
     </div>
   )
 }

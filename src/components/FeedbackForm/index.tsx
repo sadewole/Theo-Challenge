@@ -30,6 +30,7 @@ const FeedbackForm = ({
         <div>
           <Header title={questions[current].label} user={user} />
           <div className={styles.content}>
+            <div>content will be here</div>
             <div className={styles.footerButton}>
               <Button onClick={handlePrev}>Previous</Button>
               {questions[current].required && (
