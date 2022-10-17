@@ -16,7 +16,7 @@ const App = () => {
   const currentUser = React.useContext(AccountContext)
   const userDispatch = React.useContext(DispatchUserContext)
   const questionDispatch = React.useContext(DispatchQuestionContext)
-  const isLoggedIn = currentUser != null
+  let isLoggedIn = currentUser != null
 
   React.useEffect(() => {
     Promise.all([http.get('questions'), http.get('people')]).then(
