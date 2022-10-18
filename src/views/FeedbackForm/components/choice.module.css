@@ -1,0 +1,29 @@
+.wrapper {
+  position: relative;
+  margin-bottom: 10px;
+  background: #f2f3f4;
+  color: #031323;
+  border-radius: 3px;
+}
+
+.wrapper label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 1rem 2rem;
+}
+
+.wrapper input {
+  position: absolute;
+  appearance: none;
+  color: transparent;
+  background: transparent;
+}
+
+.wrapperSelected {
+  background: #59636e;
+  color: #fff;
+}

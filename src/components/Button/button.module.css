@@ -19,10 +19,19 @@
 
 .secondaryButton {
   background-color: transparent;
-  border-color: var(--borderColor);
+  border-color: var(--textGreyed);
   color: var(--copyDarkColor);
 }
 
 .secondaryButton:hover {
-  background-color: var(--primaryLightColor);
+  background-color: var(--buttonDefaultHoverColor);
+  border-color: var(--textGreyed);
+  color: var(--copyDarkColor);
+}
+
+.button:disabled {
+  background-color: var(--textGreyed);
+  border-color: var(--textGreyed);
+  color: var(--copyDarkColor);
+  cursor: default;
 }
