@@ -14,7 +14,6 @@ import PrivateRoute from '../components/Routing/PrivateRoute'
 import TeamFeedback from '../views/TeamFeedback'
 import FeedbackForm from '../views/FeedbackForm'
 
-
 const App = () => {
   const currentUser = React.useContext(AccountContext)
   const userDispatch = React.useContext(DispatchUserContext)

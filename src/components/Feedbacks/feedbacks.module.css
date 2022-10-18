@@ -53,11 +53,11 @@
 }
 
 .textBlackPearl {
-  color: var(--textBlackPearl);
+  color: var(--textPrevGreyed);
 }
 
 .feedback h2 {
-  color: var(--textBlackPaint);
+  color: var(--blackPearl);
   font-style: normal;
   font-size: 22px;
   line-height: 30px;
@@ -84,7 +84,7 @@ tr:last-child td {
 }
 
 .skipBadge {
-  background: var(--textFaintBlackPearl);
+  background: var(--textGreyed);
   color: var(--white);
   border-radius: 3px;
   padding: 2px 10px;
