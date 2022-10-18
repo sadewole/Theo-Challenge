@@ -26,13 +26,8 @@
   padding: 1.5rem;
 }
 
-.users li,
-.feedback li {
+.users li {
   border-bottom: var(--baseBorder);
-}
-
-.users li:last-child {
-  border-bottom: none;
 }
 
 .user:hover {
