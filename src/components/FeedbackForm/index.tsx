@@ -32,11 +32,17 @@ const FeedbackForm = ({
           <div className={styles.content}>
             <div>content will be here</div>
             <div className={styles.footerButton}>
-              <Button onClick={handlePrev}>Previous</Button>
+              <Button onClick={handlePrev} disabled={current === 0} secondary>
+                Previous
+              </Button>
               {questions[current].required && (
-                <Button onClick={handleNext}>Skip</Button>
+                <Button onClick={handleNext} secondary>
+                  Skip
+                </Button>
               )}
-              <Button onClick={handleNext}>Next</Button>
+              <Button onClick={handleNext} disabled={false} secondary>
+                Next
+              </Button>
             </div>
           </div>
         </div>
