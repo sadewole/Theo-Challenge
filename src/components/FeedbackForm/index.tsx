@@ -27,6 +27,8 @@ const FeedbackForm = ({
     }
   }
 
+  const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
+
   return (
     <div className={styles.wrapper}>
       {questions ? (
@@ -60,6 +62,12 @@ const FeedbackForm = ({
               </Button>
             </div>
             <div>
+              <div className={styles.progressBarWrapper}>
+                <div
+                  className={styles.progressBar}
+                  style={{ width: `${progressWidth}%` }}
+                />
+              </div>
               <p
                 className={classnames(
                   styles.subtitleRegular,
