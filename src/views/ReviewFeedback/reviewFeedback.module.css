@@ -33,6 +33,10 @@
   appearance: none;
 }
 
+.selectPeriod:focus {
+  outline: none;
+}
+
 .header {
   display: flex;
   align-items: flex-end;
