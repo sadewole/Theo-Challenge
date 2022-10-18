@@ -100,8 +100,8 @@ const Rating = () => {
         />
         <label htmlFor="ten-rating">10 Stars</label>
         <div className={styles.ratingDisplay}>
-          {new Array(10).fill('').map(() => (
-            <div className={styles.rating} />
+          {new Array(10).fill('').map((_, i: number) => (
+            <div className={styles.rating} key={i} />
           ))}
         </div>
       </div>

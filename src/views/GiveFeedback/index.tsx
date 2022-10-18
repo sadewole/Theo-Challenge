@@ -30,7 +30,11 @@ const GiveFeedback = () => {
               <ul className={styles.users}>
                 {users.map((user) => (
                   <li key={user.id} className={styles.user}>
-                    <User name={user.name} avatarUrl={user.avatarUrl} />
+                    <User
+                      name={user.name}
+                      avatarUrl={user.avatarUrl}
+                      showName
+                    />
                     <span style={{ flex: 1 }} />
                     <Button onClick={() => handleFillOut(user)}>
                       Fill out

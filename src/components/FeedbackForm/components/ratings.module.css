@@ -121,3 +121,35 @@ label[for='ten-rating'] {
 .ratingTen:checked ~ .ratingDisplay .rating:nth-child(-n + 10) {
   background-color: var(--primaryColor);
 }
+
+/* Fill stars up to and including selected star */
+.ratingOne:hover ~ .ratingDisplay .rating:nth-child(-n + 1) {
+  background-color: var(--primaryColor);
+}
+.ratingTwo:hover ~ .ratingDisplay .rating:nth-child(-n + 2) {
+  background-color: var(--primaryColor);
+}
+.ratingThree:hover ~ .ratingDisplay .rating:nth-child(-n + 3) {
+  background-color: var(--primaryColor);
+}
+.ratingFour:hover ~ .ratingDisplay .rating:nth-child(-n + 4) {
+  background-color: var(--primaryColor);
+}
+.ratingFive:hover ~ .ratingDisplay .rating:nth-child(-n + 5) {
+  background-color: var(--primaryColor);
+}
+.ratingSix:hover ~ .ratingDisplay .rating:nth-child(-n + 6) {
+  background-color: var(--primaryColor);
+}
+.ratingSeven:hover ~ .ratingDisplay .rating:nth-child(-n + 7) {
+  background-color: var(--primaryColor);
+}
+.ratingEight:hover ~ .ratingDisplay .rating:nth-child(-n + 8) {
+  background-color: var(--primaryColor);
+}
+.ratingNine:hover ~ .ratingDisplay .rating:nth-child(-n + 9) {
+  background-color: var(--primaryColor);
+}
+.ratingTen:hover ~ .ratingDisplay .rating:nth-child(-n + 10) {
+  background-color: var(--primaryColor);
+}

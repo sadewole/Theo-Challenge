@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Ratings from './components/Ratings'
 import styles from './feedbackform.module.css'
 import classnames from 'classnames'
+import ChoiceSelect from './components/ChoiceSelect'
 
 const FeedbackForm = ({
   user,
@@ -33,12 +34,17 @@ const FeedbackForm = ({
           <Header title={questions[current].label} user={user} />
           <div className={styles.content}>
             <div>
-              <Ratings />
-              {/* <textarea
-                rows={15}
-                className={styles.textarea}
-                placeholder="Say something"
-              /> */}
+              {questions[current].type === 'scale' ? (
+                <Ratings />
+              ) : questions[current].type === 'text' ? (
+                <textarea
+                  rows={10}
+                  className={styles.textarea}
+                  placeholder="Say something"
+                />
+              ) : (
+                <ChoiceSelect options={questions[current].options} />
+              )}
             </div>
             <div className={styles.footerButton}>
               <Button onClick={handlePrev} disabled={current === 0} secondary>

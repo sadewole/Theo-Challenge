@@ -2,18 +2,22 @@ import * as React from 'react'
 
 export type QuestionT = {
   id: string
-  type: 'scale' | 'text'
+  type: 'scale' | 'text' | 'multipleChoice'
   required: boolean
   label: string
-}
-
-export type Question2T = QuestionT & {
-  type: 'multipleChoice'
-  options: {
+  options?: {
     label: string
     value: number
   }[]
 }
+
+// export type Question2T = QuestionT & {
+//   type: 'multipleChoice'
+//   options: {
+//     label: string
+//     value: number
+//   }[]
+// }
 
 type DispatchQuestionContextT = any
 
@@ -23,7 +27,7 @@ export const QuestionContext = React.createContext<QuestionT[] | null>(null)
 
 type SetQuestionsT = {
   action: 'set'
-  payload: Array<QuestionT | Question2T>
+  payload: Array<QuestionT>
 }
 
 const reducer = (
