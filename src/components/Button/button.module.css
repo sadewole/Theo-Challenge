@@ -31,5 +31,7 @@
 
 .button:disabled {
   background-color: var(--textGreyed);
+  border-color: var(--textGreyed);
+  color: var(--copyDarkColor);
   cursor: default;
 }

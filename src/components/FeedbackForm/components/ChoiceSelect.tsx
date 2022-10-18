@@ -9,13 +9,13 @@ interface Option {
 
 type Props = {
   options: Option[] | undefined
+  setField: (e: any) => void
+  field: any
 }
 
-const ChoiceSelect = ({ options = [] }: Props) => {
-  const [current, setCurrent] = useState({} as Option)
-
+const ChoiceSelect = ({ setField, field, options = [] }: Props) => {
   const onChange = (option: Option) => {
-    setCurrent(option)
+    setField(option)
   }
 
   return (
@@ -24,13 +24,14 @@ const ChoiceSelect = ({ options = [] }: Props) => {
         <div
           key={option.value}
           className={classnames(styles.wrapper, {
-            [styles.wrapperSelected]: current.value === option.value,
+            [styles.wrapperSelected]: field?.value === option.value,
           })}
         >
           <input
             id={`${option.value}-option`}
             type="radio"
             name="choice"
+            checked={field?.value === option.value}
             value={option.label}
             onChange={() => onChange(option)}
           />

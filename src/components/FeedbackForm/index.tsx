@@ -1,23 +1,21 @@
-import React from 'react'
+import { useContext, useState } from 'react'
 import { QuestionContext } from '../../context/QuestionProvider'
-import Button from '../Button'
 import Header from './components/Header'
-import Ratings from './components/Ratings'
 import styles from './feedbackform.module.css'
 import classnames from 'classnames'
-import ChoiceSelect from './components/ChoiceSelect'
+import FieldArea from './components/FieldArea'
 
 const FeedbackForm = ({
   user,
 }: {
   user: { name: string; avatarUrl?: string }
 }) => {
-  const questions = React.useContext(QuestionContext)
-
-  const [current, setCurrent] = React.useState(0)
+  const questions = useContext(QuestionContext)
+  const [current, setCurrent] = useState(0)
+  const [formState, setFormState] = useState({})
 
   const handleNext = () => {
-    if (questions && current < questions.length) {
+    if (questions && current < questions.length - 1) {
       setCurrent(current + 1)
     }
   }
@@ -29,38 +27,50 @@ const FeedbackForm = ({
 
   const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
 
+  const handleUpdateFormState = (val: any) => {
+    if (questions) {
+      setFormState((prev) => ({
+        ...prev,
+        [questions[current].id]: {
+          id: questions[current].id,
+          ques: questions[current].label,
+          ans: val,
+        },
+      }))
+      handleNext()
+    }
+  }
+
+  const handleSubmitForm = (val: any) => {
+    let data = {}
+    if (questions)
+      data = {
+        ...formState,
+        [questions[current].id]: {
+          id: questions[current].id,
+          ques: questions[current].label,
+          ans: val,
+        },
+      }
+
+    console.log('data:', data)
+  }
+
   return (
     <div className={styles.wrapper}>
       {questions ? (
         <div>
           <Header title={questions[current].label} user={user} />
           <div className={styles.content}>
-            <div>
-              {questions[current].type === 'scale' ? (
-                <Ratings />
-              ) : questions[current].type === 'text' ? (
-                <textarea
-                  rows={10}
-                  className={styles.textarea}
-                  placeholder="Say something"
-                />
-              ) : (
-                <ChoiceSelect options={questions[current].options} />
-              )}
-            </div>
-            <div className={styles.footerButton}>
-              <Button onClick={handlePrev} disabled={current === 0} secondary>
-                Previous
-              </Button>
-              {questions[current].required && (
-                <Button onClick={handleNext} secondary>
-                  Skip
-                </Button>
-              )}
-              <Button onClick={handleNext} disabled={false}>
-                Next
-              </Button>
-            </div>
+            <FieldArea
+              question={questions[current]}
+              formState={formState}
+              handleUpdateFormState={handleUpdateFormState}
+              handleSubmitForm={handleSubmitForm}
+              handlePrev={handlePrev}
+              current={current}
+              showSubmit={current === questions.length - 1}
+            />
             <div>
               <div className={styles.progressBarWrapper}>
                 <div
