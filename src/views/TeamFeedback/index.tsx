@@ -4,7 +4,7 @@ import MainLayout from '../../layouts/MainLayout'
 const TeamFeedback = () => {
   return (
     <MainLayout loggedIn>
-      <h1>My Feedback</h1>
+      <h1>Team Feedback</h1>
       <Feedbacks />
     </MainLayout>
   )
