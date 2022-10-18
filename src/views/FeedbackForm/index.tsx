@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {
   DispatchQuestionContext,
@@ -15,9 +15,23 @@ const FeedbackForm = () => {
   const history = useHistory()
   const currentUser = useContext(AccountContext)
   const questionDispatch = useContext(DispatchQuestionContext)
-  const { questions, currentFieldUser: user } = useContext(QuestionContext)
+  const {
+    questions,
+    currentFieldUser: user,
+    feedbackList,
+  } = useContext(QuestionContext)
   const [current, setCurrent] = useState(0)
   const [formState, setFormState] = useState({})
+
+  useEffect(() => {
+    const alreadySubmitted = feedbackList.find(
+      (feed) => feed.from.id === currentUser?.id && feed.to.id === user?.id,
+    )
+
+    if (alreadySubmitted) {
+      setFormState(alreadySubmitted.feedback)
+    }
+  }, [currentUser?.id, feedbackList, user?.id])
 
   const handleNext = () => {
     if (questions && current < questions.length - 1) {
@@ -29,8 +43,6 @@ const FeedbackForm = () => {
       setCurrent(current - 1)
     }
   }
-
-  const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
 
   const handleUpdateFormState = (val: any) => {
     if (questions) {
@@ -71,6 +83,8 @@ const FeedbackForm = () => {
 
     history.push('/share-feedback/thank-you')
   }
+
+  const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
 
   return (
     <MainLayout loggedIn>
