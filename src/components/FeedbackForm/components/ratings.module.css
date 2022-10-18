@@ -1,0 +1,123 @@
+.fieldset {
+  border: none;
+  padding-top: 3.5rem;
+}
+
+.ratingWrapper,
+.ratingDisplay {
+  display: grid;
+  grid: 2rem / repeat(10, 1fr);
+}
+
+.ratingWrapper {
+  height: 74px;
+  margin-bottom: 7px;
+}
+
+.ratingDisplay {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+.rating {
+  pointer-events: none;
+  background-color: var(--lightGrey);
+  width: 74px;
+  height: 74px;
+}
+
+.ratingWrapper input,
+.ratingWrapper label,
+.ratingWrapper label::selection {
+  appearance: none;
+  color: transparent;
+  background: transparent;
+  z-index: 1;
+  height: 74px;
+}
+
+.ratingOne,
+label[for='one-rating'] {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.ratingTwo,
+label[for='two-rating'] {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.ratingThree,
+label[for='three-rating'] {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.ratingFour,
+label[for='four-rating'] {
+  grid-row: 1;
+  grid-column: 4;
+}
+
+.ratingFive,
+label[for='five-rating'] {
+  grid-row: 1;
+  grid-column: 5;
+}
+.ratingSix,
+label[for='six-rating'] {
+  grid-row: 1;
+  grid-column: 6;
+}
+.ratingSeven,
+label[for='seven-rating'] {
+  grid-row: 1;
+  grid-column: 7;
+}
+.ratingEight,
+label[for='eight-rating'] {
+  grid-row: 1;
+  grid-column: 8;
+}
+.ratingNine,
+label[for='nine-rating'] {
+  grid-row: 1;
+  grid-column: 9;
+}
+.ratingTen,
+label[for='ten-rating'] {
+  grid-row: 1;
+  grid-column: 10;
+}
+
+/* Fill stars up to and including selected star */
+.ratingOne:checked ~ .ratingDisplay .rating:nth-child(-n + 1) {
+  background-color: var(--primaryColor);
+}
+.ratingTwo:checked ~ .ratingDisplay .rating:nth-child(-n + 2) {
+  background-color: var(--primaryColor);
+}
+.ratingThree:checked ~ .ratingDisplay .rating:nth-child(-n + 3) {
+  background-color: var(--primaryColor);
+}
+.ratingFour:checked ~ .ratingDisplay .rating:nth-child(-n + 4) {
+  background-color: var(--primaryColor);
+}
+.ratingFive:checked ~ .ratingDisplay .rating:nth-child(-n + 5) {
+  background-color: var(--primaryColor);
+}
+.ratingSix:checked ~ .ratingDisplay .rating:nth-child(-n + 6) {
+  background-color: var(--primaryColor);
+}
+.ratingSeven:checked ~ .ratingDisplay .rating:nth-child(-n + 7) {
+  background-color: var(--primaryColor);
+}
+.ratingEight:checked ~ .ratingDisplay .rating:nth-child(-n + 8) {
+  background-color: var(--primaryColor);
+}
+.ratingNine:checked ~ .ratingDisplay .rating:nth-child(-n + 9) {
+  background-color: var(--primaryColor);
+}
+.ratingTen:checked ~ .ratingDisplay .rating:nth-child(-n + 10) {
+  background-color: var(--primaryColor);
+}

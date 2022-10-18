@@ -2,6 +2,7 @@ import React from 'react'
 import { QuestionContext } from '../../context/QuestionProvider'
 import Button from '../Button'
 import Header from './components/Header'
+import Ratings from './components/Ratings'
 import styles from './feedbackform.module.css'
 import classnames from 'classnames'
 
@@ -32,11 +33,12 @@ const FeedbackForm = ({
           <Header title={questions[current].label} user={user} />
           <div className={styles.content}>
             <div>
-              <textarea
+              <Ratings />
+              {/* <textarea
                 rows={15}
                 className={styles.textarea}
                 placeholder="Say something"
-              />
+              /> */}
             </div>
             <div className={styles.footerButton}>
               <Button onClick={handlePrev} disabled={current === 0} secondary>
