@@ -50,7 +50,7 @@ const Feedbacks = ({
       </ul>
 
       <div className={styles.feedback}>
-        <h2>{selectedUser.to.name}'s Feedback</h2>
+        <h2>{selectedUser[identify].name}'s Feedback</h2>
 
         <table>
           <tbody>
