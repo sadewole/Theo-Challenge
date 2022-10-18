@@ -75,3 +75,18 @@
   background-color: #1ddebb;
   border-radius: 5px;
 }
+
+.backButton {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.backText {
+  margin-bottom: 0;
+}

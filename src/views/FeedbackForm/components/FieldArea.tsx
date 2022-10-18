@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { QuestionT } from '../../../context/QuestionProvider'
-import Button from '../../Button'
+import Button from '../../../components/Button'
 import ChoiceSelect from './ChoiceSelect'
 import Ratings from './Ratings'
 

@@ -1,9 +1,10 @@
-import User from '../../User'
+import User from '../../../components/User'
 import styles from '../feedbackform.module.css'
 import classnames from 'classnames'
+import { UserT } from '../../../context/types'
 
 type Props = {
-  user: { name: string; avatarUrl?: string }
+  user: UserT
   title: string
 }
 
