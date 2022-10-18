@@ -2,8 +2,22 @@ import User from '../User'
 import styles from './feedbacks.module.css'
 import classnames from 'classnames'
 import Scale from './components/Scale'
+import { SubmittedData } from '../../context/QuestionProvider'
+import { useState } from 'react'
+import Skipped from './components/Skipped'
+import { isNotNumber, isObject } from '../../utils/valueIdentify'
 
-const Feedbacks = () => {
+type Option = { value: string; label: string }
+
+const Feedbacks = ({
+  feedbacks,
+  identify,
+}: {
+  feedbacks: SubmittedData[]
+  identify: 'from' | 'to'
+}) => {
+  const [selectedUser, setSelectedUser] = useState(feedbacks[0])
+
   return (
     <div className={styles.feedbackContainer}>
       <ul className={styles.users}>
@@ -17,59 +31,47 @@ const Feedbacks = () => {
             Feedback given
           </h3>
         </li>
-        <li
-          className={classnames(styles.user, { [styles.userSelected]: true })}
-        >
-          <User name="John Doe" />
-        </li>
+        {feedbacks.map((feed, index: number) => (
+          <li
+            key={index}
+            className={classnames(styles.user, {
+              [styles.userSelected]:
+                feed[identify].id === selectedUser[identify].id,
+            })}
+            onClick={() => setSelectedUser(feed)}
+          >
+            <User
+              name={feed[identify].name}
+              avatarUrl={feed[identify].avatarUrl}
+              showName
+            />
+          </li>
+        ))}
       </ul>
 
       <div className={styles.feedback}>
-        <h2>John Doe's Feedback</h2>
+        <h2>{selectedUser.to.name}'s Feedback</h2>
 
         <table>
           <tbody>
-            <tr>
-              <td>
-                How much do you trust this person to deliver high quality work?
-              </td>
-              <td>
-                <Scale count={6} />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Is this person up to date with the latest accounting
-                regulations?
-              </td>
-              <td>Yes, you are reasonably up to date with new regulations.</td>
-            </tr>
-            <tr>
-              <td>
-                How well does this person understand the technical domain of our
-                product?
-              </td>
-              <td>
-                {' '}
-                <Scale count={8} />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Is this person up to date with the latest accounting
-                regulations?
-              </td>
-              <td>
-                <span
-                  className={classnames(
-                    styles.skipBadge,
-                    styles.subtitleRegular,
-                  )}
-                >
-                  skipped
-                </span>
-              </td>
-            </tr>
+            {Object.entries(selectedUser.feedback).map(([_, v], index) => {
+              return (
+                <tr key={index}>
+                  <td>{v.ques}</td>
+                  <td>
+                    {isObject(v.ans) ? (
+                      (v.ans as Option).label
+                    ) : !v.ans ? (
+                      <Skipped />
+                    ) : !isNotNumber(v.ans) ? (
+                      <Scale count={Number(v.ans)} />
+                    ) : (
+                      v.ans
+                    )}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
