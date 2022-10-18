@@ -1,0 +1,16 @@
+.scaleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.scale {
+  height: 35.92px;
+  width: 33.91px;
+  border-radius: 0px;
+  background-color: var(--lightGrey);
+}
+
+.readScale {
+  background-color: var(--primaryColor);
+}

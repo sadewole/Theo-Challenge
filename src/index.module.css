@@ -10,11 +10,17 @@
   --copyLightColor: var(--white);
   --primaryColor: #ab61e5;
   --primaryLightColor: #faf5ff;
+  --primaryFaintColor: #fbf7fe;
   --primaryMediumColor: #e7e2f8;
+
+  --textBlackPearl: #59636e;
+  --textFaintBlackPearl: #acb1b6;
+  --textBlackPaint: #031323;
   --textGreyed: #acb1b6;
   --buttonDefaultHoverColor: #d9dcde;
   --blackPearl: #031323;
   --textPrevGreyed: #59636e;
+
 
   /* TYPOGRAPHY */
   --font-family: sans-serif;
