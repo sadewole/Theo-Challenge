@@ -1,5 +1,6 @@
 import User from '../../User'
 import styles from '../feedbackform.module.css'
+import classnames from 'classnames'
 
 type Props = {
   user: { name: string; avatarUrl?: string }
@@ -11,7 +12,9 @@ const Header = ({ title, user }: Props) => {
     <div className={styles.header}>
       <div>
         <h1>{title}</h1>
-        <p className={styles.subtitle}>share your feedback for {user.name}</p>
+        <p className={classnames(styles.subtitleRegular, styles.textGreyed)}>
+          share your feedback for {user.name}
+        </p>
       </div>
       <User name={user.name} avatarUrl={user.avatarUrl} />
     </div>

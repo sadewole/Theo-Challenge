@@ -3,6 +3,7 @@ import { QuestionContext } from '../../context/QuestionProvider'
 import Button from '../Button'
 import Header from './components/Header'
 import styles from './feedbackform.module.css'
+import classnames from 'classnames'
 
 const FeedbackForm = ({
   user,
@@ -30,7 +31,13 @@ const FeedbackForm = ({
         <div>
           <Header title={questions[current].label} user={user} />
           <div className={styles.content}>
-            <div>content will be here</div>
+            <div>
+              <textarea
+                rows={15}
+                className={styles.textarea}
+                placeholder="Say something"
+              />
+            </div>
             <div className={styles.footerButton}>
               <Button onClick={handlePrev} disabled={current === 0} secondary>
                 Previous
@@ -40,9 +47,22 @@ const FeedbackForm = ({
                   Skip
                 </Button>
               )}
-              <Button onClick={handleNext} disabled={false} secondary>
+              <Button onClick={handleNext} disabled={false}>
                 Next
               </Button>
+            </div>
+            <div>
+              <p
+                className={classnames(
+                  styles.subtitleRegular,
+                  styles.textBlackPearl,
+                )}
+              >
+                Questions Completed
+              </p>
+              <p className={styles.textBlackPearl}>
+                {current + 1}/{questions.length}
+              </p>
             </div>
           </div>
         </div>

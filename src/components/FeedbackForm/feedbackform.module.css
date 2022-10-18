@@ -7,9 +7,10 @@
 .header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 19px;
 }
 
-.subtitle {
+.subtitleRegular {
   font-family: var(--font-family);
   font-style: normal;
   font-weight: var(--fw-bold);
@@ -17,7 +18,6 @@
   line-height: 16px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--textGreyed);
 }
 
 .content {
@@ -30,4 +30,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 36px 0;
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid var(--buttonDefaultHoverColor);
+  border-radius: 3px;
+  font-family: var(--font-family);
+  padding: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fs-base);
+  line-height: 22px;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: var(--textGreyed);
+}
+
+.textPrevGreyed {
+  color: var(--textPrevGreyed);
+}
+.textBlackPearl {
+  color: var(--blackPearl);
+}
+.textGreyed {
+  color: var(--textGreyed);
 }
