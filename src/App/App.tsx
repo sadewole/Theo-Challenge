@@ -12,12 +12,14 @@ import ReviewFeedback from '../views/ReviewFeedback'
 import { AccountContext } from '../context/AccountProvider'
 import PrivateRoute from '../components/Routing/PrivateRoute'
 import TeamFeedback from '../views/TeamFeedback'
+import FeedbackForm from '../views/FeedbackForm'
+
 
 const App = () => {
   const currentUser = React.useContext(AccountContext)
   const userDispatch = React.useContext(DispatchUserContext)
   const questionDispatch = React.useContext(DispatchQuestionContext)
-  const isLoggedIn = currentUser != null
+  let isLoggedIn = currentUser != null
 
   React.useEffect(() => {
     Promise.all([http.get('questions'), http.get('people')]).then(
@@ -51,6 +53,13 @@ const App = () => {
           </PrivateRoute>
           <PrivateRoute isLoggedIn={isLoggedIn} exact path="/share-feedback">
             <GiveFeedback />
+          </PrivateRoute>
+          <PrivateRoute
+            isLoggedIn={isLoggedIn}
+            exact
+            path="/share-feedback/fill-out"
+          >
+            <FeedbackForm />
           </PrivateRoute>
           <PrivateRoute isLoggedIn={isLoggedIn} exact path="/components">
             <Components />
