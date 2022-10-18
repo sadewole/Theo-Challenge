@@ -1,0 +1,32 @@
+.wrapper {
+  margin: auto;
+  max-width: 780px;
+}
+
+.heading {
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--textPrevGreyed);
+}
+
+.users {
+  border: var(--baseBorder);
+  list-style-type: none;
+}
+
+.user {
+  align-items: center;
+  border-bottom: var(--baseBorder);
+  display: flex;
+  padding: 1rem;
+}
+
+.user:hover {
+  background-color: var(--primaryLightColor);
+}
+
+.user:last-child {
+  border-bottom: none;
+}

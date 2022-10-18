@@ -28,7 +28,6 @@ const reducer = (
     localStorage.setItem('user:logged', JSON.stringify(update.payload))
     return update.payload
   } else if (update.action === 'logout') {
-    console.log('logout')
     localStorage.removeItem('user:logged')
     return null
   } else if (update.action === 'fetchAccount') {

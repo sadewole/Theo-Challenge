@@ -1,17 +1,37 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { QuestionContext } from '../../context/QuestionProvider'
+import {
+  DispatchQuestionContext,
+  QuestionContext,
+} from '../../context/QuestionProvider'
 import Header from './components/Header'
 import styles from './feedbackform.module.css'
 import classnames from 'classnames'
 import FieldArea from './components/FieldArea'
 import MainLayout from '../../layouts/MainLayout'
+import { AccountContext } from '../../context/AccountProvider'
 
 const FeedbackForm = () => {
   const history = useHistory()
-  const { questions, currentFieldUser: user } = useContext(QuestionContext)
+  const currentUser = useContext(AccountContext)
+  const questionDispatch = useContext(DispatchQuestionContext)
+  const {
+    questions,
+    currentFieldUser: user,
+    feedbackList,
+  } = useContext(QuestionContext)
   const [current, setCurrent] = useState(0)
   const [formState, setFormState] = useState({})
+
+  useEffect(() => {
+    const alreadySubmitted = feedbackList.find(
+      (feed) => feed.from.id === currentUser?.id && feed.to.id === user?.id,
+    )
+
+    if (alreadySubmitted) {
+      setFormState(alreadySubmitted.feedback)
+    }
+  }, [currentUser?.id, feedbackList, user?.id])
 
   const handleNext = () => {
     if (questions && current < questions.length - 1) {
@@ -23,8 +43,6 @@ const FeedbackForm = () => {
       setCurrent(current - 1)
     }
   }
-
-  const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
 
   const handleUpdateFormState = (val: any) => {
     if (questions) {
@@ -52,8 +70,21 @@ const FeedbackForm = () => {
         },
       }
 
-    console.log('data:', data)
+    // submit
+    questionDispatch({
+      action: 'submitFeedback',
+      payload: {
+        from: currentUser,
+        to: user,
+        date: new Date(),
+        feedback: data,
+      },
+    })
+
+    history.push('/share-feedback/thank-you')
   }
+
+  const progressWidth = questions ? 100 * ((current + 1) / questions.length) : 0
 
   return (
     <MainLayout loggedIn>
@@ -70,8 +101,8 @@ const FeedbackForm = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M8 11.7L6.66667 13L0 6.5L6.66667 0L8 1.3L2.70833 6.5L8 11.7Z"
               fill="#59636E"
             />

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { UserT } from './types'
+import { FeedbackT, UserT } from './types'
 
 export type QuestionT = {
   id: string
@@ -12,20 +12,32 @@ export type QuestionT = {
   }[]
 }
 
+export type SubmittedData = {
+  from: UserT
+  to: UserT
+  date: string
+  feedback: FeedbackT
+}
+
 type SetQuestionsT = {
   action: 'set'
   payload: Array<QuestionT>
 }
 type SetFieldUser = {
   action: 'fieldUser'
-  payload: null
+  payload: UserT
+}
+type SetSubmitFeedback = {
+  action: 'submitFeedback'
+  payload: SubmittedData
 }
 
-type Action = SetQuestionsT | SetFieldUser
+type Action = SetQuestionsT | SetFieldUser | SetSubmitFeedback
 
 type State = {
   currentFieldUser: UserT | null
   questions: QuestionT[] | null
+  feedbackList: SubmittedData[]
 }
 
 type DispatchQuestionContextT = any
@@ -37,6 +49,7 @@ export const QuestionContext = React.createContext<State>({} as State)
 const initialState = {
   currentFieldUser: null,
   questions: [],
+  feedbackList: [],
 }
 
 const reducer = (state: State, update: Action): State => {
@@ -51,6 +64,12 @@ const reducer = (state: State, update: Action): State => {
     return {
       ...state,
       currentFieldUser: update.payload,
+    }
+  }
+  if (update.action === 'submitFeedback') {
+    return {
+      ...state,
+      feedbackList: [...state.feedbackList, update.payload],
     }
   }
 

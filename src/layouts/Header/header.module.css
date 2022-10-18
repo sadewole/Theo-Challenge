@@ -34,3 +34,24 @@
   border-right: var(--baseBorder);
   flex: 1;
 }
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout p {
+  margin-bottom: 2px;
+}
+
+.logout a {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 0px;
+  padding: 0px;
+  color: #59636e;
+}

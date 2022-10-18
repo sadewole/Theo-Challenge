@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './choice.module.css'
 import classnames from 'classnames'
 

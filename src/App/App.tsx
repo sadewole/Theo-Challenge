@@ -13,7 +13,7 @@ import { AccountContext } from '../context/AccountProvider'
 import PrivateRoute from '../components/Routing/PrivateRoute'
 import TeamFeedback from '../views/TeamFeedback'
 import FeedbackForm from '../views/FeedbackForm'
-
+import ThankYou from '../views/ThankYou'
 
 const App = () => {
   const currentUser = React.useContext(AccountContext)
@@ -60,6 +60,13 @@ const App = () => {
             path="/share-feedback/fill-out"
           >
             <FeedbackForm />
+          </PrivateRoute>
+          <PrivateRoute
+            isLoggedIn={isLoggedIn}
+            exact
+            path="/share-feedback/thank-you"
+          >
+            <ThankYou />
           </PrivateRoute>
           <PrivateRoute isLoggedIn={isLoggedIn} exact path="/components">
             <Components />
