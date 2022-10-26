@@ -8,8 +8,6 @@ import Skipped from './components/Skipped'
 import { isNotNumber, isObject } from '../../utils/valueIdentify'
 import { OptionT } from '../../context/types'
 
-type Option = { value: string; label: string }
-
 const Feedbacks = ({
   feedbacks,
   identify,

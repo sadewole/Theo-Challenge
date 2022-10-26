@@ -20,7 +20,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="1"
-          checked={field == '1'}
+          checked={field === '1'}
           onChange={onChange}
         />
         <label htmlFor="one-rating">1 Star</label>
@@ -30,7 +30,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="2"
-          checked={field == '2'}
+          checked={field === '2'}
           onChange={onChange}
         />
         <label htmlFor="two-rating">2 Stars</label>
@@ -40,7 +40,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="3"
-          checked={field == '3'}
+          checked={field === '3'}
           onChange={onChange}
         />
         <label htmlFor="three-rating">3 Stars</label>
@@ -50,7 +50,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="4"
-          checked={field == '4'}
+          checked={field === '4'}
           onChange={onChange}
         />
         <label htmlFor="four-rating">4 Stars</label>
@@ -60,7 +60,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="5"
-          checked={field == '5'}
+          checked={field === '5'}
           onChange={onChange}
         />
         <input
@@ -69,7 +69,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="6"
-          checked={field == '6'}
+          checked={field === '6'}
           onChange={onChange}
         />
         <label htmlFor="six-rating">6 Stars</label>
@@ -79,7 +79,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="7"
-          checked={field == '7'}
+          checked={field === '7'}
           onChange={onChange}
         />
         <label htmlFor="seven-rating">7 Stars</label>
@@ -89,7 +89,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="8"
-          checked={field == '8'}
+          checked={field === '8'}
           onChange={onChange}
         />
         <label htmlFor="eight-rating">8 Stars</label>
@@ -99,7 +99,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="9"
-          checked={field == '9'}
+          checked={field === '9'}
           onChange={onChange}
         />
         <label htmlFor="nine-rating">9 Stars</label>
@@ -109,7 +109,7 @@ const Rating = ({ setField, field }: Props) => {
           type="radio"
           name="reviewRating"
           value="10"
-          checked={field == '10'}
+          checked={field === '10'}
           onChange={onChange}
         />
         <label htmlFor="ten-rating">10 Stars</label>
