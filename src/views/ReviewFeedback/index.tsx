@@ -9,14 +9,14 @@ import { formatMonthYear } from '../../utils/format-month-year'
 import styles from './reviewFeedback.module.css'
 
 const applySort = (list: any[]) => {
-  const comparator = (a: any, b: any) =>
-    Number(new Date(a.date)) - Number(new Date(b.date))
-  return list.sort(comparator)
+  return list.sort(
+    (a, b) => Number(new Date(a.date)) - Number(new Date(b.date)),
+  )
 }
 
-const sortedOptions = (list: any) => {
+const sortedOptions = (list: SubmittedData[]) => {
   // Returns::: [{date: 'September 2022'}, {date: 'August 2022'}]
-  const getDateList = list.reduce((acc: any[], curr: { date: string }) => {
+  const getDateList = list.reduce((acc: Record<'date', string>[], curr) => {
     const formattedDate = formatMonthYear(curr.date)
 
     return acc.some((i) => i.date === formattedDate)
@@ -28,7 +28,7 @@ const sortedOptions = (list: any) => {
 }
 
 const applyFilteredList = (
-  list: any,
+  list: SubmittedData[],
   selectedDate: string,
 ): SubmittedData[] => {
   if (selectedDate === 'all') {

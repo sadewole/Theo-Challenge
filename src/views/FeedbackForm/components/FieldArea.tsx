@@ -5,14 +5,15 @@ import ChoiceSelect from './ChoiceSelect'
 import Ratings from './Ratings'
 
 import styles from '../feedbackform.module.css'
+import { FeedbackT, OptionT } from '../../../context/types'
 
 type Props = {
   question: QuestionT
   handlePrev: () => void
-  handleUpdateFormState: (e: any) => void
-  handleSubmitForm: (e: any) => void
+  handleUpdateFormState: (e: OptionT | string) => void
+  handleSubmitForm: (e: OptionT | string) => void
   current: number
-  formState: any
+  formState: FeedbackT
   showSubmit?: boolean
 }
 
@@ -26,19 +27,19 @@ const FieldArea = ({
   handleSubmitForm,
 }: Props) => {
   const [field, setField] = useState('')
-  const [multiField, setMultiField] = useState<any>({})
+  const [multiField, setMultiField] = useState({ value: -1, label: '' })
 
   useEffect(() => {
     if (question.type === 'multipleChoice') {
-      setMultiField(formState[question.id]?.ans)
+      setMultiField(formState[question.id]?.ans as OptionT)
     } else {
-      setField(formState[question.id]?.ans)
+      setField(formState[question.id]?.ans as string)
     }
   }, [formState, question.id, question.type])
 
   const resetField = () => {
     setField('')
-    setMultiField(null)
+    setMultiField({ value: -1, label: '' })
   }
 
   const handleSkipped = () => {

@@ -1,19 +1,15 @@
 import styles from './choice.module.css'
 import classnames from 'classnames'
+import { OptionT } from '../../../context/types'
 
-interface Option {
-  value: number
-  label: string
+type Props<T> = {
+  options?: T[]
+  setField: (e: T) => void
+  field: T
 }
 
-type Props = {
-  options: Option[] | undefined
-  setField: (e: any) => void
-  field: any
-}
-
-const ChoiceSelect = ({ setField, field, options = [] }: Props) => {
-  const onChange = (option: Option) => {
+const ChoiceSelect = ({ setField, field, options = [] }: Props<OptionT>) => {
+  const onChange = (option: OptionT) => {
     setField(option)
   }
 

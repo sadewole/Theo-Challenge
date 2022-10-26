@@ -4,13 +4,13 @@ export type UserT = {
   name: string
 }
 
-type Option = { value: string; label: string }
+export type OptionT = { value: number; label: string }
 
 export type FeedbackT = Record<
   string,
   {
     id: string
     ques: string
-    ans: string | Option
+    ans: string | OptionT
   }
 >

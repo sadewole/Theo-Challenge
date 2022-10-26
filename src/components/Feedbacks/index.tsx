@@ -6,6 +6,7 @@ import { SubmittedData } from '../../context/QuestionProvider'
 import { useState } from 'react'
 import Skipped from './components/Skipped'
 import { isNotNumber, isObject } from '../../utils/valueIdentify'
+import { OptionT } from '../../context/types'
 
 type Option = { value: string; label: string }
 
@@ -60,7 +61,7 @@ const Feedbacks = ({
                   <td>{v.ques}</td>
                   <td>
                     {isObject(v.ans) ? (
-                      (v.ans as Option).label
+                      (v.ans as OptionT).label
                     ) : !v.ans ? (
                       <Skipped />
                     ) : !isNotNumber(v.ans) ? (

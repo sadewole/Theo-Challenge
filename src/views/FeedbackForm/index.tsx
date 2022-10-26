@@ -10,6 +10,7 @@ import classnames from 'classnames'
 import FieldArea from './components/FieldArea'
 import MainLayout from '../../layouts/MainLayout'
 import { AccountContext } from '../../context/AccountProvider'
+import { FeedbackT, OptionT } from '../../context/types'
 
 const FeedbackForm = () => {
   const history = useHistory()
@@ -21,7 +22,7 @@ const FeedbackForm = () => {
     feedbackList,
   } = useContext(QuestionContext)
   const [current, setCurrent] = useState(0)
-  const [formState, setFormState] = useState({})
+  const [formState, setFormState] = useState<FeedbackT>({})
 
   useEffect(() => {
     const alreadySubmitted = feedbackList.find(
@@ -44,7 +45,7 @@ const FeedbackForm = () => {
     }
   }
 
-  const handleUpdateFormState = (val: any) => {
+  const handleUpdateFormState = (val: OptionT | string) => {
     if (questions) {
       setFormState((prev) => ({
         ...prev,
@@ -58,7 +59,7 @@ const FeedbackForm = () => {
     }
   }
 
-  const handleSubmitForm = (val: any) => {
+  const handleSubmitForm = (val: OptionT | string) => {
     let data = {}
     if (questions)
       data = {
